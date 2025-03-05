@@ -93,10 +93,11 @@
                 equipe: document.getElementById("equipe").value,
                 hours: document.getElementById("hours").value,
                 todaydate1: document.getElementById("todaydate1").value,
-                finca: document.getElementById("finca").value
+                finca: document.getElementById("finca").value,
+                motif: document.getElementById("motif").value
             };
             
-            fetch("https://script.google.com/macros/s/AKfycbzTj39u75seolqCtQBx0q6jFGN9_0Kzd6dz9XG0Q9LVIBSMw_uUlKqAclsrEie0tOyVDQ/exec", {
+            fetch("https://script.google.com/macros/s/AKfycbwY6Hmksmm83Md_TENU0eLwzJKtDenBqlCV1gX-2ZlrmW9wlBzk2TzcsxrtdLYm_HdXaQ/exec", {
                 method: "POST",
                 mode:"no-cors",
                 headers: { "Content-Type": "application/json" },
@@ -118,12 +119,14 @@
         <label>Matricule :</label>
         <input type="text" id="matricule" required><br>
         <label>Nombre :</label>
-        <input type="text" id="nombre" required><br>
+        <input type="number" id="nombre" required><br>
         <label>Équipe :</label>
         <input type="text" id="equipe" required><br>
         <label>Heures :</label>
         <input type="number" id="hours" required><br>
-        <label>Date :</label>
+        <label>motif :</label>
+        <input type="text" id="motif" required><br>
+        <label>date :</label>
         <input type="date" id="todaydate1" required><br>
         <label>Ferme :</label>
         <input type="text" id="finca" required><br>
