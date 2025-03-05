@@ -3,38 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>ramadan pointage</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
             text-align: center;
-            background-color: #f8f9fa;
+            margin-top: 20px;
             color: #333;
-            padding: 50px;
         }
-        .container {
+
+        .form-container {
+            width: 90%;
             max-width: 600px;
-            margin: auto;
-            background: #fff;
+            margin: 30px auto;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #d9534f;
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+            font-size: 1rem;
         }
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
+
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            label {
+                font-size: 0.9rem;
+            }
+
+            input[type="text"], input[type="number"], input[type="date"] {
+                font-size: 0.9rem;
+            }
+
+            button {
+                font-size: 1.1rem;
+            }
         }
     </style>
+    <script>
+        function sendData() {
+            var formData = {
+                matricule: document.getElementById("matricule").value,
+                nombre: document.getElementById("nombre").value,
+                equipe: document.getElementById("equipe").value,
+                hours: document.getElementById("hours").value,
+                todaydate1: document.getElementById("todaydate1").value,
+                finca: document.getElementById("finca").value
+            };
+            
+            fetch("https://script.google.com/macros/s/AKfycbzTj39u75seolqCtQBx0q6jFGN9_0Kzd6dz9XG0Q9LVIBSMw_uUlKqAclsrEie0tOyVDQ/exec", {
+                method: "POST",
+                mode:"no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                alert("Une erreur est survenue : " + error);
+            });
+        }
+    </script>
 </head>
 <body>
-
-<div class="container">
-    <h1>🚧 Site en maintenance 🚧</h1>
     
-</div>
-
+    <div class="form-container">
+        <label>Matricule :</label>
+        <input type="text" id="matricule" required><br>
+        <label>Nombre :</label>
+        <input type="text" id="nombre" required><br>
+        <label>Équipe :</label>
+        <input type="text" id="equipe" required><br>
+        <label>Heures :</label>
+        <input type="number" id="hours" required><br>
+        <label>Date :</label>
+        <input type="date" id="todaydate1" required><br>
+        <label>Ferme :</label>
+        <input type="text" id="finca" required><br>
+        <button onclick="sendData()">Envoyer</button>
+    </div>
 </body>
 </html>
