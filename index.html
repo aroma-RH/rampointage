@@ -35,7 +35,7 @@
             font-size: 1rem;
         }
 
-        input[type="text"], input[type="number"], input[type="date"] {
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"] {
             width: 100%;
             padding: 10px;
             margin: 10px 0 20px 0;
@@ -76,7 +76,7 @@
                 font-size: 0.9rem;
             }
 
-            input[type="text"], input[type="number"], input[type="date"] {
+            input[type="text"], input[type="number"], input[type="date"], input[type="time"]{
                 font-size: 0.9rem;
             }
 
@@ -123,11 +123,11 @@
         <label>Équipe :</label>
         <input type="text" id="equipe" required><br>
         <label>Heures :</label>
-        <input type="number" id="hours" required><br>
+        <input type="time" id="hours" required><br>
         <label>motif :</label>
         <input type="text" id="motif" required><br>
         <label>date :</label>
-        <input type="time" id="todaydate1" required><br>
+        <input type="date" id="todaydate1" required><br>
         <label>Ferme :</label>
         <input type="text" id="finca" required><br>
         <button onclick="sendData()">Envoyer</button>
